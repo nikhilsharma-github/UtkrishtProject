@@ -12,16 +12,17 @@ import {
 import Login from "../src/components/account/Login";
 import Home from "./components/home/Home";
 import Header from "./components/header/Header";
+import CreatePost from "./components/create/CreatePost";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
-  return isAuthenticated ? 
+  return isAuthenticated ? (
     <>
-    <Header />
+      <Header />
       <Outlet />
     </>
-   : 
-    <Navigate replace to='/login' />
-  
+  ) : (
+    <Navigate replace to="/login" />
+  );
 };
 
 function App() {
@@ -30,18 +31,25 @@ function App() {
   return (
     <DataProvider>
       <BrowserRouter>
-        
         <div style={{ marginTop: 64 }}>
           <Routes>
             <Route
               path="/login"
-        element={<Login isUserAuthenticated={isUserAuthenticated} />}
+              element={<Login isUserAuthenticated={isUserAuthenticated} />}
             />
 
-            <Route path="/"
+            <Route
+              path="/"
               element={<PrivateRoute isAuthenticated={isAuthenticated} />}
             >
               <Route path="/" element={<Home />} />
+            </Route>
+
+            <Route
+              path="/create"
+              element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+            >
+              <Route path="/create" element={<CreatePost />} />
             </Route>
           </Routes>
         </div>
