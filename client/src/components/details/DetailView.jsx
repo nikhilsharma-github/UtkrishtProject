@@ -8,6 +8,8 @@ import { API } from "../../service/api";
 
 import { DataContext } from "../../context/DataProvider";
 
+import Comments from "./comments/Comments";
+
 const Container = styled(Box)(({theme})=>({
   margin: '50px 100px',
   [theme.breakpoints.down('md')]:{
@@ -106,6 +108,7 @@ const DetailView = () => {
         <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
       </Author>
       <Description>{post.description}</Description>
+      <Comments post={post}/>
     </Container>
   );
 };
