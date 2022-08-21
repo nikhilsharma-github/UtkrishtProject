@@ -9,10 +9,11 @@ const GithubIconColor = grey[600];
 
 const Banner = styled(Box)`
     background-image: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg);
-    width: 100%;
-    height: 50vh;
-    background-position: left 0px bottom 0px;
-    background-size: cover;
+    /* background-image: url('images/UDFbannerjpgimg.jpg'); */
+    /* /* width: 100%; */
+    height: 70vh; 
+    /* background-position: left 0px bottom 0px; */
+    /* background-size: cover; */
 `;
 
 const Wrapper = styled(Box)`
@@ -41,8 +42,18 @@ const About = () => {
                 </Text>
                 <Text variant="h5">
                     Connect with Us on
+                    <br></br>
+                    
                     <Box component="span" style={{ marginLeft: 5 }}>
-                        <Link href="https://www.linkedin.com/in/nikhil-sharma-7b32601b6/" color="inherit" target="_blank">
+                        Nikhil Sharma  <Link href="https://www.linkedin.com/in/nikhil-sharma-7b32601b6/" color="inherit" target="_blank">
+                            <LinkedInIcon color="primary" 
+                            size="lg" />
+                        </Link>
+                    </Box>  
+
+                    <Box component="span" style={{ marginLeft: 5 }}>
+                    Deepak Singh Rawat
+                        <Link href="https://www.linkedin.com/in/deepak-rawat-1b5328175/" color="inherit" target="_blank">
                             <LinkedInIcon color="primary" />
                         </Link>
                     </Box>  
