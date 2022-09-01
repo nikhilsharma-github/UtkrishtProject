@@ -20,8 +20,8 @@ const Container = styled(Box)(({ theme }) => ({
 
 const Image = styled("img")({
   width: "100%",
-  height: "50vh",
-  objectFit: "cover",
+  height: "70%",
+  // objectFit: "cover",
   borderRadius: "1rem",
 });
 
@@ -31,10 +31,29 @@ const Heading = styled(Typography)`
   text-align: center;
   margin: 50px 0 10px 0px;
   word-break: break-word;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 0.5rem;
+  background-color: #ffffff;
+  background: hsla(212, 99%, 69%, 1);
+  background: linear-gradient(
+    45deg,
+    hsla(212, 99%, 69%, 1) 0%,
+    hsla(172, 100%, 85%, 1) 100%
+  );
 
-  background-image: linear-gradient(45deg, #aef4ff, #befffe);
+  background: -moz-linear-gradient(
+    45deg,
+    hsla(212, 99%, 69%, 1) 0%,
+    hsla(172, 100%, 85%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    45deg,
+    hsla(212, 99%, 69%, 1) 0%,
+    hsla(172, 100%, 85%, 1) 100%
+  );
+  
+
+  /* background-image: linear-gradient(45deg, #aef4ff, #befffe); */
 
   & text {
     text-shadow: 2px 2px 4px rgba(179, 147, 211, 0.1),
@@ -42,6 +61,15 @@ const Heading = styled(Typography)`
       4px 6px 4px rgba(179, 147, 211, 0.2),
       5px 8px 4px rgab(179, 147, 211, 0.25);
   }
+
+font-family: 'Roboto', sans-serif;
+
+
+
+
+
+
+
 `;
 
 const EditIcon = styled(EditTwoToneIcon)`
@@ -66,20 +94,27 @@ const DeleteIcon = styled(DeleteTwoToneIcon)`
 `;
 
 const Author = styled(Box)`
-  color: #878787;
   margin: 20px 0;
   display: flex;
-  background-color: #cbf9f0;
-  padding: 0 1rem 0 0;
+  padding: 2px 0 2px 0;
   border-radius: 5px;
 `;
 
 const Description = styled(Typography)`
   word-break: break-word;
+  background-color: #e9e9ff;
+  border-radius: 0.2rem;
+  padding:0.2rem;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
 `;
 
 const DetailView = () => {
   const [post, setPost] = useState({});
+
+  
+  
+  
 
   const { id } = useParams();
 
@@ -87,17 +122,25 @@ const DetailView = () => {
 
   const navigate = useNavigate();
 
-  // const url = post.picture
-  //   ? post.picture
-  //   : "https://cdn.pixabay.com/photo/2012/12/27/19/40/chain-link-72864_960_720.jpg";
+  const url = post.picture ? post.picture : "https://thumbs.dreamstime.com/b/horizontal-banner-hands-typing-laptop-keyboard-various-electronic-devices-symbols-programming-software-horizontal-125917922.jpg";
 
-  const url = post.picture ? post.picture : "images/UDFbannerjpgimg.jpg";
+  // const url = post.picture ? post.picture : "images/UDFbannerjpgimg.jpg";
+  // const url = post.picture
+  // ? post.picture
+  // : "images/UDFbannerjpgimg.jpg";
+
+// const url = post.picture;
+
 
   useEffect(() => {
     const fetchData = async () => {
       let response = await API.getPostById(id);
       if (response.isSuccess) {
         setPost(response.data);
+      
+      //   const descval=post.description;
+      // descval=post.description.replace(/\n/g, "<br />");
+      // post.description=descval;
       }
     };
     fetchData();
@@ -109,6 +152,25 @@ const DetailView = () => {
     if (response.isSuccess) {
       navigate("/");
     }
+  };
+
+
+  const categoryColor = {
+    All_Categories: "#004683",
+    Coding: "#013e2a",
+    Interview_Experiences: "#1a5b03",
+  General_Discussion: "#6c0000",
+    Guidance_And_Tips: "#b05301",
+    Academics: "#250036",
+  };
+
+  const categoryColorBG = {
+    All_Categories: "#97ccfb",
+    Coding: "#7ff8d7",
+    Interview_Experiences: "#a9f7b4",
+    General_Discussion: "#fabebe",
+    Guidance_And_Tips: "#fff2b0",
+    Academics: "#d3b3fd",
   };
 
   return (
@@ -125,32 +187,39 @@ const DetailView = () => {
         )}
       </Box>
       <Heading>{post.title}</Heading>
-      <Author>
+      <Author  style={{
+          color: categoryColor[post?.categories],
+          backgroundColor: categoryColorBG[post?.categories],
+
+        }} >
         <Typography
           style={{
-            backgroundColor: "#A4DDED",
             borderRadius: "5px",
-            padding: "0rem 1rem 0 1rem",
+            padding: "0rem 1rem 0 0.2rem",
             color: "navy",
+            fontFamily:"Oswald"
           }}
         >
           Author:{" "}
-          <Box component="span" style={{ fontWeight: 600 }}>
+          <Box component="span" style={{ fontWeight: 600}}>
             {" "}
             {post.username}
           </Box>
         </Typography>
         {/* <Typography>{post.createdDate}</Typography> */}
-        <Typography style={{ marginLeft: "auto", color: "black", fontWeight:'600', textDecoration:'underline' }}>
+        <Typography style={{ fontFamily:"Oswald", marginLeft: "auto", color: "black", fontWeight:'600',fontSize:'1.1rem' }}>
           {post.categories}
         </Typography>
-        <Typography style={{ marginLeft: "auto", color: "black" }}>
+        <Typography style={{fontFamily:"Oswald", marginLeft: "auto",marginRight: "2px", color: "black" }}>
           {new Date(post.createdDate).toDateString()}
         </Typography>
       </Author>
       <Description>{post.description}</Description>
+      
       <Comments post={post} />
     </Container>
+    
+    
   );
 };
 

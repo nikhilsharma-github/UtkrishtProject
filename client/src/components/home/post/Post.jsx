@@ -16,7 +16,7 @@ const Container = styled(Box)`
 
   border-radius: 0.7rem;
   margin: 1rem;
-  height: 350px;
+  height: 400px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -78,6 +78,9 @@ const Details = styled(Typography)`
   word-break: break-word;
   padding: 5px 5px 5px 5px;
   font-family: sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 10px;
 `;
 
 const Category = styled(Text)`
@@ -93,56 +96,28 @@ const Category = styled(Text)`
 `;
 
 const Post = ({ post }) => {
+  
+  // const url = post.picture ? post.picture : "https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg";
+
   const url = post.picture ? post.picture : "images/UDFbannerjpgimg.jpg";
+  // const url = post.picture;
 
-  // const [categoryColor, setCategoryColor] = useState("#55fff1");
-
-  // const handleCategoryColor = (post) => {
-  //     if (post.categories === 'All') {
-  //       setCategoryColor('#ff0000');
-  //     }
-  //     else if (post.categories === 'Coding') {
-  //       setCategoryColor('#0088ff');
-  //     }
-  //     else if (post.categories === 'Interview_Experiences') {
-  //       setCategoryColor('#00ff48');
-  //     }
-  //     else if (post.categories === 'General_Discussion') {
-  //       setCategoryColor('#ffd000');
-  //     }
-  //     else if (post.categories === 'GuidanceAndTips') {
-  //       setCategoryColor('pink');
-  //     }
-  //   }
-  // useEffect(() => {
-  //   if (post.categories === "All") {
-  //     setCategoryColor("#ff0000");
-  //   } else if (post.categories === "Coding") {
-  //     setCategoryColor("#007eed");
-  //   } else if (post.categories === "Interview_Experiences") {
-  //     setCategoryColor("#00ff48");
-  //   } else if (post.categories === "General_Discussion") {
-  //     setCategoryColor("#ffd000");
-  //   } else if (post.categories === "GuidanceAndTips") {
-  //     setCategoryColor("pink");
-  //   }
-  // }, [categoryColor]);
 
   const categoryColor = {
-    All: "#004683",
+    All_Categories: "#004683",
     Coding: "#013e2a",
     Interview_Experiences: "#1a5b03",
   General_Discussion: "#6c0000",
-    GuidanceAndTips: "#b05301",
+    Guidance_And_Tips: "#b05301",
     Academics: "#250036",
   };
 
   const categoryColorBG = {
-    All: "#97ccfb",
+    All_Categories: "#97ccfb",
     Coding: "#7ff8d7",
     Interview_Experiences: "#a9f7b4",
     General_Discussion: "#fabebe",
-    GuidanceAndTips: "#fff2b0",
+    Guidance_And_Tips: "#fff2b0",
     Academics: "#d3b3fd",
   };
 
@@ -158,9 +133,11 @@ const Post = ({ post }) => {
       >
         {post.categories}
       </Category>
-      <Heading>{addElipsis(post.title, 20)}</Heading>
+      {/* <Heading>{addElipsis(post.title, 90)}</Heading> */}
+      <Heading>{post.title}</Heading>
       {/* <Text>{post.username}</Text> */}
-      <Details>{addElipsis(post.description, 100)}</Details>
+      {/* <Details>{addElipsis(post.description, 180)}</Details> */}
+      <Details>{post.description}</Details>
     </Container>
   );
 };

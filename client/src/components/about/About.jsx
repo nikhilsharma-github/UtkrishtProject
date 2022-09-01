@@ -5,13 +5,18 @@ import { grey } from "@mui/material/colors";
 
 const GithubIconColor = grey[600];
 
-const Banner = styled(Box)`
-  background-image: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg);
-  /* background-image: url('images/UDFbannerjpgimg.jpg'); */
-  /* /* width: 100%; */
-  height: 70vh;
-  /* background-position: left 0px bottom 0px; */
-  /* background-size: cover; */
+const Image = styled(Box)`
+  /* background: url("https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg")  */
+  background: url("images/homepageBanner.jpg") center/55% repeat-x #002244;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 5%;
 `;
 
 const Wrapper = styled(Box)`
@@ -22,30 +27,36 @@ const Wrapper = styled(Box)`
   }
 `;
 
+const Heading = styled(Typography)`
+  font-family: "Kaushan Script", cursive;
+  background-color: #f9f9ff;
+  color: #001f72;
+  border-radius: 0.2rem;
+  padding: 2px;
+  text-align: center;
+`;
+
 const Text = styled(Typography)`
-  color: #878787;
+  color: #292828ad;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+`;
+
+const NameText=styled(Text)`
+font-family: 'Lobster', cursive;
+
 `;
 
 const About = () => {
   return (
     <Box>
-      <Banner />
       <Wrapper>
-        <Typography variant="h3">USICT Discuss Fourm</Typography>
+        <Image />
+        <Heading variant="h3">USICT Discuss Fourm</Heading>
         <Text variant="h5">
           A simple project where students can post their doubts or share their
           experiences
           <br />
-          <Box component="span" style={{ marginLeft: 5 }}>
-            Github 
-            <Link
-              href="https://github.com/nikhilsharma-github/UtkrishtProject"
-              color="inherit"
-              target="_blank"
-            >
-              <GitHub color={GithubIconColor} />
-            </Link>
-          </Box>
+          <Box component="span" style={{ marginLeft: 5 }}></Box>
           <ul>
             <li>
               Students can post their doubts Regarding placements, Academics,
@@ -65,7 +76,7 @@ const About = () => {
             </li>
           </ul>
         </Text>
-        <Text variant="h5">
+        <NameText variant="h5">
           Connect with Us on
           <br></br>
           <Box component="span" style={{ marginLeft: 5 }}>
@@ -90,12 +101,20 @@ const About = () => {
               color="inherit"
               target="_blank"
             >
-              <LinkedInIcon color="primary" 
-               style={{ width: 30, height: 30 }}
-              />
+              <LinkedInIcon color="primary" style={{ width: 30, height: 30 }} />
             </Link>
           </Box>
-        </Text>
+        </NameText>
+        {/* <GithubBox>
+          Github
+          <Link
+            href="https://github.com/nikhilsharma-github/UtkrishtProject"
+            color="inherit"
+            target="_blank"
+          >
+            <GitHub color={GithubIconColor} />
+          </Link>
+        </GithubBox> */}
       </Wrapper>
     </Box>
   );

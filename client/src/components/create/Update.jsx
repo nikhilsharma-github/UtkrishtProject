@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-
+import AddAPhotoTwoToneIcon from '@mui/icons-material/AddAPhotoTwoTone';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { DataContext } from "../../context/DataProvider";
@@ -26,8 +26,8 @@ const Container = styled(Box)(({theme})=>({
 
 const Image = styled("img")({
   width: "100%",
-  height: "50vh",
-  objectFit: "cover",
+  height: "70%",
+  // objectFit: "cover",
 });
 
 const StyledFormControl = styled(FormControl)`
@@ -40,6 +40,11 @@ const InputTextField = styled(InputBase)`
   flex: 1;
   margin: 0 30px;
   font-size: 25px;
+  background-color: #e5f5ff;
+  padding-left: 5px;
+  border-radius: 0.5rem;
+  font-family: 'Urbanist', sans-serif; 
+  color: #000058;
 `;
 
 const Textarea = styled(TextareaAutosize)`
@@ -47,6 +52,10 @@ const Textarea = styled(TextareaAutosize)`
   margin-top: 50px;
   font-size: 18px;
   border: none;
+  background-color: #f0efef;
+  border-radius: 0.5rem;
+  padding-left:5px;
+  letter-spacing: 2px;
 
   &:focus-visible {
     outline: none;
@@ -62,6 +71,16 @@ const initialPost = {
   createdDate: new Date(),
 };
 
+const ImageUploadIcon=styled(AddAPhotoTwoToneIcon)`
+  cursor:pointer;
+  /* transition:transform .5s; */
+  border-radius:0.5rem;
+  &:hover{
+    /* transform:scale(1.05); */
+    background-color: pink;
+  }
+`;
+
 const Update = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,9 +91,14 @@ const Update = () => {
 
   const { id } = useParams();
 
-  const url = post.picture
-    ? post.picture
-    : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
+  const url = post.picture ? post.picture : "https://thumbs.dreamstime.com/b/horizontal-banner-hands-typing-laptop-keyboard-various-electronic-devices-symbols-programming-software-horizontal-125917922.jpg";
+
+
+  // const url = post.picture
+  // ? post.picture
+  // : "images/UDFbannerjpgimg.jpg";
+
+  // const url = post.picture;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,13 +138,20 @@ const Update = () => {
     }
   };
 
+  const PublishButton=styled(Button)`
+background-color: #fcd8b1;
+font-weight: 600;
+color:#765300;
+`;
+
   return (
     <Container>
       <Image src={url} alt="post"></Image>
 
       <StyledFormControl>
         <label htmlFor="fileInput">
-          <AddAPhotoIcon fontSize="large" color="action" />
+          {/* <AddAPhotoIcon fontSize="large" color="action"/> */}
+          <ImageUploadIcon fontSize="large" color="secondary"/>
         </label>
         <input
           type="file"
@@ -135,9 +166,9 @@ const Update = () => {
           onChange={(e) => handleChange(e)}
           name="title"
         ></InputTextField>
-        <Button variant="contained" onClick={() => updateBlogPost()}>
+        <PublishButton variant="outlined" color="warning" onClick={() => updateBlogPost()}>
           Update
-        </Button>
+        </PublishButton>
       </StyledFormControl>
       <Textarea
         minRows={5}

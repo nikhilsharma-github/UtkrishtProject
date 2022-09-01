@@ -20,19 +20,19 @@ font-family: "Ubuntu", sans-serif;
 const Home = () => {
 
   const categoryColor = {
-    All: "#004683",
+    All_Categories: "#004683",
     Coding: "#013e2a",
     Interview_Experiences: "#1a5b03",
   General_Discussion: "#6c0000",
-    GuidanceAndTips: "#b05301",
+    Guidance_And_Tips: "#b05301",
     Academics: "#250036",
   };
 
   const categoryColorBG = {
-    All: "#97ccfb",
+    All_Categories: "#97ccfb",
     Coding: "#7ff8d7",
     Interview_Experiences: "#a9f7b4",
-    GuidanceAndTips: "#fff2b0",
+    Guidance_And_Tips: "#fff2b0",
     General_Discussion: "#fabebe",
     Academics: "#d3b3fd",
   };
@@ -43,9 +43,9 @@ const Home = () => {
     <>
       <Banner />
       <CategoryBox style={{
-          color: categoryColor[location.search?.split('=')[1]||('All')],
-          backgroundColor: categoryColorBG[location.search?.split('=')[1]||('All')],
-        }}>{location.search?.split('=')[1] || 'All Categories'}</CategoryBox>
+          color: categoryColor[location.search?.split('=')[1]||('All_Categories')],
+          backgroundColor: categoryColorBG[location.search?.split('=')[1]||('All_Categories')],
+        }}>{location.search?.split('=')[1] || 'All_Categories'}</CategoryBox>
       <Grid container>
         <Grid item lg={2} md={3} sm={4} xs={12}>
           <Categories />

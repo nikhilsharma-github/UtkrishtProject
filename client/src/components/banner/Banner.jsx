@@ -21,14 +21,18 @@ const Heading = styled(Typography)`
   color: #110070;
   line-height: 1;
   letter-spacing: 20px;
+  /* font-family: 'Oswald', sans-serif; */
+   font-family: 'Kaushan Script', cursive;
+  font-style: italic;
 `;
 
 const SubHeading = styled(Typography)`
-  font-size: 1.5rem;
+  font-size: 2rem;
   border-radius: 0.5rem;
-  color: "#002244";
+  color: #033e79;
   padding: 0.2rem;
   background: hsla(212, 99%, 69%, 1);
+  font-family: 'Lobster',cursive;
 
   background: linear-gradient(
     45deg,

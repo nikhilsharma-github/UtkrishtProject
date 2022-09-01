@@ -38,7 +38,7 @@ const Wrapper = styled(Box)`
 
 const LoginButton = styled(Button)`
   /* text-transform: none; */
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   background: rgb(0,11,72);
   background: linear-gradient(124deg, #021376 0%, rgba(10,46,158,1) 45%, #6fd9cb 100%);
   font-weight: 500;
@@ -48,6 +48,11 @@ const LoginButton = styled(Button)`
   color:#ffffff;
   margin-top: 200px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0/20%);
+
+  /* font-family: 'Oswald', sans-serif; */
+/* font-family: 'Roboto', sans-serif; */
+/* font-family: 'Ubuntu', sans-serif; */
+font-family: 'Urbanist', sans-serif; 
   `;
 
 
@@ -56,11 +61,17 @@ text-transform: none;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   height: 3rem;
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: 1.2em;
+  letter-spacing: 2px;
   font-weight: 600;
   color:#05002a;
   margin-top: 200px;
   background-color: #b0daff;
+
+  /* font-family: 'Oswald', sans-serif; */
+font-family: 'Roboto', sans-serif;
+/* font-family: 'Ubuntu', sans-serif; */
+/* font-family: 'Urbanist', sans-serif; */ 
 `;
 
 
@@ -194,7 +205,8 @@ const Login = ({isUserAuthenticated}) => {
               required
             />
             {error && <Error>{error}</Error>}
-            <SignupButton onClick={() => signupUser()}>Register Now</SignupButton>
+            <SignupButton onClick={() => signupUser()} style={{backgroundColor:
+            '#c7c8ed'}}>Register Now</SignupButton>
             <LoginButton variant="contained" style={{letterSpacing:'0', textTransform:'none', fontSize:'1rem'}} onClick={() => toggleSignup()}>
               Already Have an Account
             </LoginButton>

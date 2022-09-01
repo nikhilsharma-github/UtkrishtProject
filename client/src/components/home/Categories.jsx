@@ -19,8 +19,9 @@ const StyledTable = styled(Table)`
 
 const StyledButton = styled(Button)`
   margin: 0 auto;
-  padding: 0.8rem;
-  margin-left: 10px;
+  padding: 1rem;
+  margin-left: 3px;
+  margin-bottom: 0.5rem;
   font-weight: 600;
   width: 90%;
   font-size: 1.2rem;
@@ -60,20 +61,20 @@ const Categories = () => {
   const category = searchParams.get("category");
 
   const categoryColor = {
-    All: "#004683",
+    All_Categories: "#004683",
     Coding: "#013e2a",
     Interview_Experiences: "#1a5b03",
     General_Discussion: "#6c0000",
-    GuidanceAndTips: "#b05301",
+    Guidance_And_Tips: "#b05301",
     Academics: "#250036",
   };
 
   const categoryColorBG = {
-    All: "#97ccfb",
+    All_Categories: "#97ccfb",
     Coding: "#7ff8d7",
     Interview_Experiences: "#a9f7b4",
     General_Discussion: "#fabebe",
-    GuidanceAndTips: "#fff2b0",
+    Guidance_And_Tips: "#fff2b0",
     Academics: "#d3b3fd",
   };
 
@@ -81,7 +82,7 @@ const Categories = () => {
   return (
     <CategoryBox>
       <StyledLink
-        to={`/create?category=${category || ""}`}
+        to={`/create?category=${category || "All_Categories"}`}
         style={{ backgroundColor: "white"}}
         
       >
@@ -95,7 +96,7 @@ const Categories = () => {
                 to="/"
                 style={{ color: "#004683", backgroundColor: "#97ccfb"}}
               >
-                All Categories
+                All_Categories
               </StyledLink>
             </TableCell>
           </TableRow>

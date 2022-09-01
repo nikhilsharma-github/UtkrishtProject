@@ -24,7 +24,9 @@ text-align: center;
 font-weight: 700;
 font-size: 2rem;
 margin:1rem 0 1rem ;
-border-radius: 1rem;
+border-radius: 0.6rem;
+font-family: "Ubuntu", sans-serif;
+
 `
 const Container = styled(Box)(({theme})=>({
   margin: '8rem 5rem',
@@ -35,8 +37,8 @@ const Container = styled(Box)(({theme})=>({
 
 const Image = styled("img")({
   width: "100%",
-  height: "70vh",
-  objectFit: "cover",
+  height: "70%",
+  // objectFit: "cover",
   // boxShadow: "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px"
   boxShadow:"rgba(19, 118, 255, 0.4) 5px 5px, rgba(110, 198, 246, 0.3) 10px 10px"
 });
@@ -54,6 +56,8 @@ const InputTextField = styled(InputBase)`
   background-color: #e5f5ff;
   padding-left: 5px;
   border-radius: 0.5rem;
+  font-family: 'Urbanist', sans-serif; 
+  color: #000058;
 `;
 
 const Textarea = styled(TextareaAutosize)`
@@ -64,6 +68,7 @@ const Textarea = styled(TextareaAutosize)`
   background-color: #f0efef;
   border-radius: 0.5rem;
   padding-left:5px;
+  letter-spacing: 2px;
 
   &:focus-visible {
     outline: none;
@@ -103,14 +108,16 @@ const CreatePost = () => {
   const [file, setFile] = useState("");
   const { account } = useContext(DataContext);
 
+
+
+const url = post.picture ? post.picture : "https://thumbs.dreamstime.com/b/horizontal-banner-hands-typing-laptop-keyboard-various-electronic-devices-symbols-programming-software-horizontal-125917922.jpg";
+
+
   // const url = post.picture
-    // ? post.picture
-    // : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
+  //   ? post.picture
+  //   : "images/UDFbannerjpgimg.jpg";
 
-
-  const url = post.picture
-    ? post.picture
-    : "images/UDFbannerjpgimg.jpg";
+  // const url = post.picture;
 
   useEffect(() => {
     const getImage = async () => {
@@ -140,9 +147,35 @@ const CreatePost = () => {
     }
   };
 
+  
+
+  const categoryColor = {
+    All: "#004683",
+    Coding: "#013e2a",
+    Interview_Experiences: "#1a5b03",
+  General_Discussion: "#6c0000",
+    GuidanceAndTips: "#b05301",
+    Academics: "#250036",
+  };
+
+  const categoryColorBG = {
+    All: "#97ccfb",
+    Coding: "#7ff8d7",
+    Interview_Experiences: "#a9f7b4",
+    General_Discussion: "#fabebe",
+    GuidanceAndTips: "#fff2b0",
+    Academics: "#d3b3fd",
+  };
+
+
   return (
     <Container>
-      <CategoryBox>{location.search?.split('=')[1] || 'All Categories'}</CategoryBox>
+      <CategoryBox 
+       style={{
+        color: categoryColor[location.search?.split('=')[1]||('All')],
+        backgroundColor: categoryColorBG[location.search?.split('=')[1]||('All')],
+      }} 
+      >{location.search?.split('=')[1] || 'All Categories'}</CategoryBox>
       <Image src={url} alt="post"></Image>
 
       <StyledFormControl>

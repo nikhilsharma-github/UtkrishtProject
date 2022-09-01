@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 import './Header.css';
 
 const Component = styled(AppBar)`
-  background: #ffffff;
+  /* background: #820e0e; */
+
   color: #010153;
-  padding: 0.5rem;
+  padding: 0.2rem;
+
+  background: rgb(220,211,246);
+background: linear-gradient(124deg, rgba(220,211,246,1) 0%, rgba(162,185,255,1) 45%, rgba(157,244,219,1) 100%);
 `;
 
 const Container = styled(Toolbar)`
